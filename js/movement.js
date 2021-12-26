@@ -1,20 +1,14 @@
-const myCanvas = document.getElementById('myCanvas');
 
 
-const ctx = myCanvas.getContext('2d');
+//TODO seems when canvas moves to left, bar disappears a bit, look why
 
-const width = myCanvas.width = (window.innerWidth);
-const height = myCanvas.height = window.innerHeight;
-
-
-
-export let moveWallToLeft=()=>{
+let moveWallToLeft=()=>{
     setInterval(() => {
         if(myCanvas.width>300){
            myCanvas.width=myCanvas.width-100;
 
         }
-    }, 1000);
+    }, 10000);
 }
 
 moveWallToLeft();
