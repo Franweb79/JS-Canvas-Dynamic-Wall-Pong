@@ -2,7 +2,7 @@
 
 export class Ball{
 
-    
+    //isBallGluedAtBar will by default be true
     constructor(x, y, velX, velY, color, size){
 
         /**-x and y coordinates — the horizontal and vertical coordinates where the ball starts on the screen. This can range between 0 (top left hand corner) to the width and height of the browser viewport (bottom right hand corner). */
@@ -17,6 +17,8 @@ export class Ball{
         this.color=color;
         /** -size — each ball gets a size — this is its radius, in pixels. */
         this.size=size;
+
+        this.isBallGluedAtBar=true;
     
     }
 
@@ -116,7 +118,8 @@ export class Ball{
             ctx.beginPath();
 
 
-            ctx.fillStyle = 'black';
+            ctx.fillStyle = myCanvas.backgroundColor;
+            console.log (myCanvas.backgroundColor);
             //ctx.strokeStyle = 'black';
         
             //we delete the last arc by creating another one with more size than original

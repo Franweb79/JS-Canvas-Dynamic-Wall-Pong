@@ -15,7 +15,7 @@ initialPositionForBallX=myBar.x+myBar.width+ballSize;
 initialPositionForBallY=myBar.y+(myBar.height/2);
 
 
-let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,randomColor(),ballSize);
+let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',ballSize);
 
 console.log (myBall);
 
@@ -31,6 +31,7 @@ setInterval(()=>{
 
     myBar.draw();
     myBall.draw();
+    
 
 
 
@@ -38,14 +39,41 @@ setInterval(()=>{
 
 /*
     we drawe again bar and ball when mouse event,
-    //TODO shoould not be deleted when moWallToTheLeft starts if there is no mouse
-    inside canvas
+  
 */
 myCanvas.addEventListener("mousemove",(event)=>{
     myBar.deleteOldRectangle();
     myBar.y=event.pageY;//new rectangle will start where pageY
     myBar.draw();
 
-    myBall.draw();
+    //myBall.draw();
+
+    /*
+        if ball is glued to the bar, must follow it,
+        so will be redraw with relative values to the bar, like at the beginning
+        but with new values
+    */
+
+        if(myBall.isBallGluedAtBar){
+           
+            initialPositionForBallX=myBar.x+myBar.width+ballSize;
+            initialPositionForBallY=myBar.y+(myBar.height/2);
+
+            console.log( initialPositionForBallX);
+            console.log(initialPositionForBallY);
+
+            //delete old position, code for it is inside update method
+            myBall.update();
+
+            //set new initial positions fot the ball, relative to the bar
+
+            myBall.x=initialPositionForBallX;
+            myBall.y=initialPositionForBallY;
+
+           // myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,randomColor(),ballSize);
+
+            myBall.draw();
+
+        }
   
 });
