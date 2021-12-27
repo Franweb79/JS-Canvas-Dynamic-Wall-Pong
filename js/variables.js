@@ -19,7 +19,7 @@ myCanvas.width = window.innerWidth;
  //TODO recorta la foto para que la L no haya espacios con la pared del canvas
 myBackground.style.width=(window.innerWidth).toString()+"px";
 myBackground.style.height=window.innerHeight.toString()+"px";
-myBackground.style.backgroundImage= "url('../assets/img/limits.png')";
+myBackground.style.backgroundImage= "url('../assets/img/limits-no-3.png')";
 myBackground.style.backgroundSize= "80% 100%";
 myBackground.style.backgroundRepeat="no-repeat";
 myBackground.style.display="inline-block";
