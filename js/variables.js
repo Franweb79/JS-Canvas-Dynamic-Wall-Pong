@@ -13,10 +13,10 @@ const ctx = myCanvas.getContext('2d');
 //TODO mira bien esta mierda del innerwidth diferencias con width a secas
 
 myCanvas.width = window.innerWidth;
- myCanvas.height  = window.innerHeight;
+myCanvas.height  = window.innerHeight;
 
  //TODO apunta que aqui hace falta .style.width y con el canvas no, y que tuve que poner absolute
- //TODO recorta la foto para que la L no haya espacios con la pared del canvas
+ //TODO MARCADOR https://stackoverflow.com/questions/26802908/display-the-numbers-of-an-array-on-html5-canvas
 myBackground.style.width=(window.innerWidth).toString()+"px";
 myBackground.style.height=window.innerHeight.toString()+"px";
 myBackground.style.backgroundImage= "url('../assets/img/limits-no-3.png')";
@@ -25,7 +25,28 @@ myBackground.style.backgroundRepeat="no-repeat";
 myBackground.style.display="inline-block";
 myBackground.style.position="absolute";
 
+/** function to generate random number 
+ * @returns a random number
+ * */ 
 
+let randomNumber = (min, max)=> {
+    const num = Math.floor(Math.random() * (max - min + 1)) + min;
+    return num;
+}
+
+
+/**
+ * randomColor() method will create a random rgb color
+ * @returns an rgb color string
+ */
+let randomColor=()=>{
+
+    let color=`rgb(${randomNumber(0,255)},${randomNumber(0,255)},${randomNumber(0,255)})`;
+
+
+    return color;   
+
+}
 
 
 console.log (myCanvas.width);
