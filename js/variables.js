@@ -48,6 +48,15 @@ let randomColor=()=>{
 
 }
 
+/*
+    initial position for ball will be done here because is easier,
+    we have to access bar's x and y positions to calculate so maybe
+    is better to do here than declaring them as ball object´s properties
+    
+    //TODO maybe can be done as property and bar accesses that property
+*/
+let initialPositionForBallX=0;
+let initialPositionForBallY=0;
 
 console.log (myCanvas.width);
 console.log (myBackground.width);

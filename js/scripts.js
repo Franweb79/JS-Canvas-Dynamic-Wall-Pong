@@ -6,10 +6,16 @@ moveWallToLeft();
 
 const myBar=new Bar(25,25,25,175);
 
+const ballSize=10;
+
+/*
+    ballSize (size is radius), must be added to make ball collapse with bar border
+*/
+initialPositionForBallX=myBar.x+myBar.width+ballSize;
+initialPositionForBallY=myBar.y+(myBar.height/2);
 
 
-
-let myBall=new Ball(200,200,0,0,randomColor(),10);
+let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,randomColor(),ballSize);
 
 console.log (myBall);
 
