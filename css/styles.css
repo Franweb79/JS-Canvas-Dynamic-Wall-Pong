@@ -1,6 +1,10 @@
 html, body {
     margin: 0;
     background-color: white;
+    background-image: url("../assets/img/limits.png");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    background-size: calc(100% - 200px) 100%;
   }
   
   html {

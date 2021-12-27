@@ -6,7 +6,7 @@ export let moveWallToLeft=()=>{
            myCanvas.width=myCanvas.width-100;
 
         }
-    }, 10000);
+    }, 1000);
 }
 
 
