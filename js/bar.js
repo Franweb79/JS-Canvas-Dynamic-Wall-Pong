@@ -1,7 +1,5 @@
 
-
-
-class Bar{
+export class Bar{
 
     
     constructor(x,y,width, height){
@@ -38,12 +36,3 @@ class Bar{
     }
 }
 
-const myBar=new Bar(25,25,25,175);
-myBar.draw();
-
-myCanvas.addEventListener("mousemove",(event)=>{
-    myBar.deleteOldRectangle();
-    myBar.y=event.pageY;//new rectangle will start where pageY
-    myBar.draw();
-  
-});
