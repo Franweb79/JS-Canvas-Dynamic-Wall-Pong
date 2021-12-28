@@ -67,14 +67,18 @@ export class Ball{
     */
     update(){
 
-        if((this.x + this.size) >= width) {
+        //TODO here must be the problem why sometimes ball dont bounce when 
+        //wall moves to the left
+        //TODO jsdoc make it work ok, why compile each js file separately?
+
+        if((this.x + this.size) >= myCanvas.width) {
             this.velX = -(this.velX);
         }
 
         if((this.x - this.size) <= 0) {
             this.velX = -(this.velX);
         }
-        if((this.y + this.size) >= height) {
+        if((this.y + this.size) >= myCanvas.height) {
             this.velY = -(this.velY);
         }
         if ((this.y - this.size) <= 0) {
@@ -119,7 +123,7 @@ export class Ball{
 
 
             ctx.fillStyle = myCanvas.backgroundColor;
-            console.log (myCanvas.backgroundColor);
+            //console.log (myCanvas.backgroundColor);
             //ctx.strokeStyle = 'black';
         
             //we delete the last arc by creating another one with more size than original
@@ -131,6 +135,20 @@ export class Ball{
 
     }
 
-    
+    loop(){
+
+
+        
+
+        this.velX=randomNumber(-7,7);
+        this.velY=randomNumber(-7,7);
+        setInterval(()=>{
+            
+
+            this.update();
+            this.draw();
+        },0);
+    }
 
 }
+

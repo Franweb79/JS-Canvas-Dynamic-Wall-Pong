@@ -2,8 +2,14 @@
 pa q lo puedan usar todos los modulos
 */
 
+/**
+ * 
+ * myCanvas in this case can´t be const because it will change size
+ * because of moveWallToLeft() method
+ * 
+ **/
 
-const myCanvas = document.getElementById('myCanvas');
+let myCanvas = document.getElementById('myCanvas');
 
 
 
@@ -16,8 +22,8 @@ const ctx = myCanvas.getContext('2d');
 
 //TODO mira bien esta mierda del innerwidth diferencias con width a secas
 
-const width = myCanvas.width = window.innerWidth;
-const height = myCanvas.height  = window.innerHeight;
+let width = myCanvas.width = window.innerWidth;
+let height = myCanvas.height  = window.innerHeight;
 
 //TODO WHY THIS ONYL WORKS WHEN EVENT MOUSE IS FIRED, AND ONLY PAINT A BIT, NOT THE WHOLE
 //I HAD ALSO TO SET BACK GROUND COLOR ON THE STYLES, MAYBE IT IS STILL NOT LOADED WHEN IS SHOWN?

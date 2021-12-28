@@ -1,8 +1,8 @@
-import { moveWallToLeft } from "./movement.js";
+import { moveWallToLeft } from "./canvas-movement.js";
 import {Bar} from "./bar.js";
 import {Ball} from './ball.js';
 
-moveWallToLeft();
+//
 
 const myBar=new Bar(25,25,25,175);
 
@@ -17,7 +17,15 @@ initialPositionForBallY=myBar.y+(myBar.height/2);
 
 let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',ballSize);
 
-console.log (myBall);
+console.log (myCanvas.width);
+
+//TODO solve why sometimes when wall is moving, ball doesnt bounce and get lost
+//TODO when click mouse, ball should always go forward, avoid bouncing up and down
+//TODO change ball speed at certain time
+//TODO make bar smaller at time wall moves to the left
+//TODO always ball must start slow
+moveWallToLeft();
+
 
 /*
 
@@ -38,7 +46,7 @@ setInterval(()=>{
 },0);
 
 /*
-    we drawe again bar and ball when mouse event,
+    we draw again bar and ball when mouse event,
   
 */
 myCanvas.addEventListener("mousemove",(event)=>{
@@ -61,8 +69,8 @@ myCanvas.addEventListener("mousemove",(event)=>{
             initialPositionForBallX=myBar.x+myBar.width+ballSize;
             initialPositionForBallY=myBar.y+(myBar.height/2);
 
-            console.log( initialPositionForBallX);
-            console.log(initialPositionForBallY);
+           /* console.log( initialPositionForBallX);
+            console.log(initialPositionForBallY);*/
 
             //delete old position, code for it is inside update method
             myBall.update();
@@ -78,6 +86,22 @@ myCanvas.addEventListener("mousemove",(event)=>{
 
         }
   
+});
+
+myCanvas.addEventListener("click",(event)=>{
+    
+
+    if(myBall.isBallGluedAtBar){
+        myBall.isBallGluedAtBar=false;
+
+        /*myBall.velX=3;
+        myBall.velY=3;
+        myBall.update();
+
+        myBall.draw();*/
+
+        myBall.loop();
+    }
 });
 
 
