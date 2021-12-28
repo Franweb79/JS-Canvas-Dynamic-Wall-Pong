@@ -21,10 +21,10 @@ console.log (myBall);
 
 /*
 
-with setInterval, I can do that bar and ball don´t delet if mouse event is not
-fired, that means for example if mouse is not inside the canvas
+    with setInterval, I can do that bar and ball don´t delet if mouse event is not
+    fired, that means for example if mouse is not inside the canvas
 
-timer is set to 0 so it is drawn "instantly"
+    timer is set to 0 so it is drawn "instantly"
 */
 
 setInterval(()=>{
@@ -42,6 +42,8 @@ setInterval(()=>{
   
 */
 myCanvas.addEventListener("mousemove",(event)=>{
+
+    
     myBar.deleteOldRectangle();
     myBar.y=event.pageY;//new rectangle will start where pageY
     myBar.draw();
@@ -77,3 +79,5 @@ myCanvas.addEventListener("mousemove",(event)=>{
         }
   
 });
+
+

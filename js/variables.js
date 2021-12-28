@@ -10,6 +10,9 @@ const myCanvas = document.getElementById('myCanvas');
 
 const myBackground = document.getElementById('myBackground');
 
+const myAudio=document.getElementById("myAudio");
+
+
 const ctx = myCanvas.getContext('2d');
 
 //TODO mira bien esta mierda del innerwidth diferencias con width a secas
