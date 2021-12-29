@@ -16,10 +16,13 @@ let myCanvas = document.getElementById('myCanvas');
  * myBackground had to be absolute positioned to make it work,
  * it is where the picture is drawn
  */
-const myBackground = document.getElementById('myBackground');
+let myBackground = document.getElementById('myBackground');
 
 const myAudio=document.getElementById("myAudio");
 
+/**
+ * ctx is the context of the canvas. It will be 2d context
+ */
 
 const ctx = myCanvas.getContext('2d');
 
@@ -73,6 +76,13 @@ let randomColor=()=>{
 
     //TODO maybe can be done as property and bar accesses that property
 */
+
+/**
+ * this is the variable to store initial X position of the ball (glued to the bar)
+ */
 let initialPositionForBallX=0;
+/**
+ * this is the variable to store initial Y position of the ball (glued to the bar)
+ */
 let initialPositionForBallY=0;
 

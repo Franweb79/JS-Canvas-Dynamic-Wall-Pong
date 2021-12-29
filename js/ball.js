@@ -1,11 +1,16 @@
 
-
+/**
+ * Ball is the class to create a Ball instance
+ * @class Ball
+ * 
+ */
 export class Ball{
 
     //isBallGluedAtBar will by default be true
     constructor(x, y, velX, velY, color, size){
 
         /**-x and y coordinates — the horizontal and vertical coordinates where the ball starts on the screen. This can range between 0 (top left hand corner) to the width and height of the browser viewport (bottom right hand corner). */
+        
         this.x=x;
         /** */
         this.y=y;
@@ -154,7 +159,7 @@ export class Ball{
     loop(){
 
 
-        /**
+        /*
          * on first movement, x cant be negative 
          * we need it always go forward
          */
