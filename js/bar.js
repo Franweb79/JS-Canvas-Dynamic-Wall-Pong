@@ -14,7 +14,7 @@ export class Bar{
     draw(){
 
         //First, we use beginPath() to state that we want to draw a shape on the paper.
-       
+       console.log ("barra",(this.x+this.width));
         ctx.beginPath();
 
        

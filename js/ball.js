@@ -94,6 +94,13 @@ export class Ball{
             console.log ("velx ",this.velX);
         }
 
+        //TODO  -m "commented code on ball.js to bounce when it collapses with bar, but must do that ball actually collapses with bar, not enough taking position because that would be for the whole x position not only the bar"
+       /* if( (this.isBallGluedAtBar==false) && (this.velX<0) && ((this.x - this.size)>0) && ((this.x-this.size))<=50){
+
+            this.velX = -(this.velX);
+
+        }*/
+
         if((this.x - this.size) <= 0) {
             this.velX = -(this.velX);
             console.log ("al chocar poared detras",(this.x-this.size),myCanvas.width);
