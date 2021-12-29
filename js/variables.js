@@ -12,7 +12,10 @@ pa q lo puedan usar todos los modulos
 let myCanvas = document.getElementById('myCanvas');
 
 
-
+/**
+ * myBackground had to be absolute positioned to make it work,
+ * it is where the picture is drawn
+ */
 const myBackground = document.getElementById('myBackground');
 
 const myAudio=document.getElementById("myAudio");

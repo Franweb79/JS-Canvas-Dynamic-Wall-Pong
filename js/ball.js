@@ -70,16 +70,29 @@ export class Ball{
     */
     update(){
 
-        //TODO here must be the problem why sometimes ball dont bounce when 
-        //wall moves to the left
-        //TODO jsdoc make it work ok, why compile each js file separately?
-
+        //TODO bug, when ball collapses at the same time wall is moving, is disappears for a little while before bouncing. should fix
+        
         if((this.x + this.size) >= myCanvas.width) {
-            this.velX = -(this.velX);
+            /*
+                CHECK READ ME, NOTES FOR DEVELOPERS 1
+
+            
+            */
+            if(this.velX>0){
+                this.velX = -(this.velX);
+
+            }else
+            {
+                this.velX=this.velX;
+            }
+            console.log ("al chocar poared delante",(this.x+this.size),myCanvas.width);
+            console.log ("velx ",this.velX);
         }
 
         if((this.x - this.size) <= 0) {
             this.velX = -(this.velX);
+            console.log ("al chocar poared detras",(this.x-this.size),myCanvas.width);
+            console.log ("velx ",this.velX);
         }
         if((this.y + this.size) >= myCanvas.height) {
             this.velY = -(this.velY);
@@ -141,10 +154,13 @@ export class Ball{
     loop(){
 
 
-        
+        /**
+         * on first movement, x cant be negative 
+         * we need it always go forward
+         */
 
-        this.velX=randomNumber(-7,7);
-        this.velY=randomNumber(-7,7);
+        this.velX=3//randomNumber(1,3);
+        this.velY=3//randomNumber(-7,7);
         setInterval(()=>{
             
 

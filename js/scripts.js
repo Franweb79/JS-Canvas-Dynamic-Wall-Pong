@@ -17,7 +17,6 @@ initialPositionForBallY=myBar.y+(myBar.height/2);
 
 let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',ballSize);
 
-console.log (myCanvas.width);
 
 //TODO solve why sometimes when wall is moving, ball doesnt bounce and get lost
 //TODO when click mouse, ball should always go forward, avoid bouncing up and down
