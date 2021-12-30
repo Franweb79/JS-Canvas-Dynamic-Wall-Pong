@@ -7,6 +7,7 @@ Seems it has something to do with the values of velX, coming positive or negativ
 - If for any reason velX comes negative (should not, but happens), 
     we maintain it negative to force it moving to the left. Otherwise ball would dissappear to the right. 
 
+2- We declare myBar as a global variable inside the module because using export to make it available on other modules on other modules and using would give problems. For example myBar is declared on scripts.js, that means after the definition of the Ball class on ball.js, which on its update() method needs a reference to the bar. I find for now this is the easiest way to solve it
 
 ## KNOWN BUGS
 

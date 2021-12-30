@@ -75,6 +75,7 @@ export class Ball{
     */
     update(){
 
+        console.log ("la puta barra",myBar);
         //TODO bug, when ball collapses at the same time wall is moving, is disappears for a little while before bouncing. should fix
         
         if((this.x + this.size) >= myCanvas.width) {
