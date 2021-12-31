@@ -30,7 +30,9 @@ let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',
 //TODO change ball speed at certain time
 //TODO make bar smaller at time wall moves to the left
 //TODO always ball must start slow
-//moveWallToLeft();
+
+
+moveWallToLeft();
 
 
 /*

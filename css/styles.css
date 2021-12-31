@@ -41,5 +41,6 @@ html, body {
 
 #myCanvas{
     background-color: blueviolet;
+    cursor:none;
 }
 
