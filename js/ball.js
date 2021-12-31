@@ -1,12 +1,22 @@
 
 /**
  * Ball is the class to create a Ball instance
- * @class Ball
+ * 
  * 
  */
 export class Ball{
 
     //isBallGluedAtBar will by default be true
+
+    /**
+     * 
+     * @param {*} x 
+     * @param {*} y 
+     * @param {*} velX 
+     * @param {*} velY 
+     * @param {*} color 
+     * @param {*} size 
+     */
     constructor(x, y, velX, velY, color, size){
 
         /**-x and y coordinates — the horizontal and vertical coordinates where the ball starts on the screen. This can range between 0 (top left hand corner) to the width and height of the browser viewport (bottom right hand corner). */
@@ -75,7 +85,6 @@ export class Ball{
     */
     update(){
 
-        console.log ("la puta barra",myBar);
         //TODO bug, when ball collapses at the same time wall is moving, is disappears for a little while before bouncing. should fix
         
         if((this.x + this.size) >= myCanvas.width) {
@@ -91,30 +100,24 @@ export class Ball{
             {
                 this.velX=this.velX;
             }
-            console.log ("al chocar poared delante",(this.x+this.size),myCanvas.width);
+           
             console.log ("velx ",this.velX);
         }
 
         //TODO  comentar bien esta logica en el read me
        
-       if((this.isBallGluedAtBar==false) && (this.velX<0) ){
+        if((this.isBallGluedAtBar==false) && (this.velX<0) ){
             if(((this.x - this.size)>0) && ((this.x - this.size)<=(myBar.x + myBar.width))){
                 if( ( (this.y - this.size) >= myBar.y ) && ( (this.y - this.size) <= (myBar.y + myBar.height) ) ){
                     this.velX = -(this.velX);
 
                 }
             }
-       }
-        /* if( (this.isBallGluedAtBar==false) && (this.velX<0) && ((this.x - this.size)>0) && ((this.x-this.size))<=50){
-
-            this.velX = -(this.velX);
-
-        }*/
+        }
+        
 
         if((this.x - this.size) <= 0) {
             this.velX = -(this.velX);
-            console.log ("al chocar poared detras",(this.x-this.size),myCanvas.width);
-            console.log ("velx ",this.velX);
         }
         if((this.y + this.size) >= myCanvas.height) {
             this.velY = -(this.velY);
