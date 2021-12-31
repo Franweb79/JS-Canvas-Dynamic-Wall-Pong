@@ -95,8 +95,17 @@ export class Ball{
             console.log ("velx ",this.velX);
         }
 
-        //TODO  -m "commented code on ball.js to bounce when it collapses with bar, but must do that ball actually collapses with bar, not enough taking position because that would be for the whole x position not only the bar"
-       /* if( (this.isBallGluedAtBar==false) && (this.velX<0) && ((this.x - this.size)>0) && ((this.x-this.size))<=50){
+        //TODO  comentar bien esta logica en el read me
+       
+       if((this.isBallGluedAtBar==false) && (this.velX<0) ){
+            if(((this.x - this.size)>0) && ((this.x - this.size)<=(myBar.x + myBar.width))){
+                if( ( (this.y - this.size) >= myBar.y ) && ( (this.y - this.size) <= (myBar.y + myBar.height) ) ){
+                    this.velX = -(this.velX);
+
+                }
+            }
+       }
+        /* if( (this.isBallGluedAtBar==false) && (this.velX<0) && ((this.x - this.size)>0) && ((this.x-this.size))<=50){
 
             this.velX = -(this.velX);
 
@@ -172,8 +181,8 @@ export class Ball{
          * we need it always go forward
          */
 
-        this.velX=3//randomNumber(1,3);
-        this.velY=3//randomNumber(-7,7);
+        this.velX=4//randomNumber(1,3);
+        this.velY=4//randomNumber(-7,7);
         setInterval(()=>{
             
 

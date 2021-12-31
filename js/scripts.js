@@ -2,6 +2,9 @@ import { moveWallToLeft } from "./canvas-movement.js";
 import {Bar} from "./bar.js";
 import {Ball} from './ball.js';
 
+//TODO apunta lo del window. para hacer la variable global 
+//   https://stackoverflow.com/questions/43605434/what-is-the-correct-way-to-define-global-variable-in-es6-modules-->
+
 /**
  * myBar is declared as global with the window keyword, because we need it
  * this way. SEE NOTES FOR DEVELOPERS NUMBER 2 FOR DETAILS
@@ -23,12 +26,10 @@ initialPositionForBallY=myBar.y+(myBar.height/2);
 let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',ballSize);
 
 
-//TODO solve why sometimes when wall is moving, ball doesnt bounce and get lost
-//TODO when click mouse, ball should always go forward, avoid bouncing up and down
 //TODO change ball speed at certain time
 //TODO make bar smaller at time wall moves to the left
 //TODO always ball must start slow
-moveWallToLeft();
+//moveWallToLeft();
 
 
 /*
