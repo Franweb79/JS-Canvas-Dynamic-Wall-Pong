@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: bar.js</title>
+    <title>JSDoc: Source: counter.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: bar.js</h1>
+    <h1 class="page-title">Source: counter.js</h1>
 
     
 
@@ -28,66 +28,64 @@
         <article>
             <pre class="prettyprint source linenums"><code>
 /**
- * Bar is the call used to create the bar or cursor. The object will be instantiated
- * as global with the window object on the scripts.js because we need it to be accesible to all
- * the other modules
+ * initial values of relativeCansdWidth and relativeCanvasHeight
+ * will be the total size of canvas. Later values will be changed
+ * on drawCounter() method
  */
+ let relativeCanvasWidth=myCanvas.width;
 
-export class Bar{
+ let relativeCanvasHeight=myCanvas.height;
 
+ /**
+ * we create a counter class because I need it to be evertytime drawn. Otherwise
+ * it is deleted when moveLeftToTheWall() executes, so I can made a draw method
+ * 
+ */
+export class Counter{
+
+  
     /**
      * 
-     * @param {*} x 
-     * @param {*} y 
-     * @param {*} width 
-     * @param {*} height 
+     * @param {*} p_counter 
+     * @param {*} p_fontsize 
      */
-    constructor(x,y,width, height){
+    constructor(p_counter,p_fontsize){
 
-    /**
-     * -x and y coordinates — the horizontal and vertical coordinates where the ball starts on the screen. This can range between 0 (top left hand corner) to the width and height of the browser viewport (bottom right hand corner). 
-     */
-     this.x=x;
-     /** */
-     this.y=y;
-     /** width of the bar*/
-     this.width=width;
-     /**height of the bar */
-     this.height=height;
-    
+        this.counter=p_counter;
+        this.fontSize=p_fontsize;
+
     }
 
     /**
-     * method used to draw the bar
+     * will be called on scripts.js, on a seInterval function along
+     * with the draw methods for bar and ball objects
      */
-    draw(){
+    drawCounter(){
 
-        //First, we use beginPath() to state that we want to draw a shape on the paper.
-       console.log ("barra",(this.x+this.width));
-        ctx.beginPath();
+        //fontsize declared on variables.js
+        ctx.font = `${this.fontSize}px serif`;
 
-       
-        ctx.fillStyle = "red";
+        /**
+         * to make a cleaner code we store this  operation on a variable.
+         * It will be the 20% of the  total width the canvas has each time 
+         * wall moves to the left, and I will discount another 10 px to 
+         * make distance between canvas border and counter bigger (otherwise it would
+         * collapse)
+         */
+        relativeCanvasWidth = ( (myCanvas.width*20) / 100) - 10;
 
-        //this will prevent bar from trespassing bottom of the canvas
-        if(this.y > (myCanvas.height - this.height)){
-            this.y = myCanvas.height - this.height;
-        }
+        /**
+         * actually this is not necessary since canvas height should be always the same
+         * (this is not a responsive app)
+         * but to make a cleaner code is helpful
+         */
+        relativeCanvasHeight = (myCanvas.height*90) /100;
 
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        
-    }
-    /**
-     * This will be used to delete the old position when we move the bar
-     */
+        ctx.fillText( this.counter, ( myCanvas.width -  relativeCanvasWidth ) , ( myCanvas.height - relativeCanvasHeight ) ) ;
 
-    deleteOldRectangle(){
-        
-        ctx.clearRect(this.x, this.y, this.width, this.height);
-      
+
     }
 }
-
 </code></pre>
         </article>
     </section>
