@@ -1,6 +1,7 @@
 import { moveWallToLeft } from "./canvas-movement.js";
 import {Bar} from "./bar.js";
 import {Ball} from './ball.js';
+import {Counter} from './counter.js';
 
 //TODO apunta lo del window. para hacer la variable global 
 //   https://stackoverflow.com/questions/43605434/what-is-the-correct-way-to-define-global-variable-in-es6-modules-->
@@ -31,6 +32,7 @@ let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',
 //TODO make bar smaller at time wall moves to the left
 //TODO always ball must start slow
 
+let myCounter= new Counter(0,48);
 
 moveWallToLeft();
 
@@ -47,6 +49,7 @@ setInterval(()=>{
 
     myBar.draw();
     myBall.draw();
+    myCounter.drawCounter();
     
 
 

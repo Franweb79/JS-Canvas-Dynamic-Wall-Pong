@@ -1,6 +1,4 @@
-/*TODO como puedo pasar esta constante y eso al script.js central 
-pa q lo puedan usar todos los modulos
-*/
+
 
 /**
  * 
@@ -85,4 +83,7 @@ let initialPositionForBallX=0;
  * this is the variable to store initial Y position of the ball (glued to the bar)
  */
 let initialPositionForBallY=0;
+
+
+
 
