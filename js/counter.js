@@ -63,16 +63,22 @@ export class Counter{
         over another when counter increases 
         but must be a better way to calculate it //TODO this
 
+        width of the rect is 40 because when counter reaches 10 it needs more space to be "hid" previous counter value
+
         */
 
-        ctx.fillRect(( myCanvas.width - relativeCanvasWidth )-10 , ( myCanvas.height - relativeCanvasHeight )-35, 40,40);
+        ctx.fillRect(( myCanvas.width - relativeCanvasWidth )-10 , ( myCanvas.height - relativeCanvasHeight )-35, 60,40);
 
         //we need to change color of context to make font visible again,
         //after painting as pink for the rect
 
         ctx.fillStyle="black";
 
-        ctx.fillText( this.counter, ( myCanvas.width -  relativeCanvasWidth ) , ( myCanvas.height - relativeCanvasHeight ) ) ;
+        /*-10 to the width, to avoid number hides on the wall when counter is more than 10
+        and screen has smaller size (for example, when inspector is opened)
+        */
+
+        ctx.fillText( this.counter, ( myCanvas.width -  relativeCanvasWidth ) -10 , ( myCanvas.height - relativeCanvasHeight ) ) ;
 
 
     }
