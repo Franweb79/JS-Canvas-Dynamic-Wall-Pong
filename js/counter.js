@@ -34,6 +34,7 @@ export class Counter{
      */
     drawCounter(){
 
+
         //fontsize declared on variables.js
         ctx.font = `${this.fontSize}px serif`;
 
@@ -53,7 +54,35 @@ export class Counter{
          */
         relativeCanvasHeight = (myCanvas.height*90) /100;
 
+        //tyo make rect be same color as background
+        ctx.fillStyle="#8a2be2";
+
+        /*
+        I have calculated manually the position of a background rect 
+        to avoid numbers drawn one (-10 to width and -35 to height)
+        over another when counter increases 
+        but must be a better way to calculate it //TODO this
+
+        */
+
+        ctx.fillRect(( myCanvas.width - relativeCanvasWidth )-10 , ( myCanvas.height - relativeCanvasHeight )-35, 40,40);
+
+        //we need to change color of context to make font visible again,
+        //after painting as pink for the rect
+
+        ctx.fillStyle="black";
+
         ctx.fillText( this.counter, ( myCanvas.width -  relativeCanvasWidth ) , ( myCanvas.height - relativeCanvasHeight ) ) ;
+
+
+    }
+
+    /**
+     * needed to delete old value from screen, then print new one with drawCounter()
+     */
+    updateCounter(){
+
+        myCounter.counter+=1;
 
 
     }

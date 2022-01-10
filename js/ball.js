@@ -115,9 +115,12 @@ export class Ball{
             }
         }
         
-
+//TODO aqui, quiz ala logica de cuando le meten gol
         if((this.x - this.size) <= 0) {
             this.velX = -(this.velX);
+
+            myCounter.updateCounter();
+            
         }
         if((this.y + this.size) >= myCanvas.height) {
             this.velY = -(this.velY);

@@ -31,8 +31,10 @@ let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',
 //TODO change ball speed at certain time
 //TODO make bar smaller at time wall moves to the left
 //TODO always ball must start slow
+//TODO intenta poner las variables creadas aqui en variables.js
 
-let myCounter= new Counter(0,48);
+//global, because we need it increase it on ball.js when ball is <=0
+window.myCounter= new Counter(0,48);
 
 moveWallToLeft();
 
@@ -47,6 +49,7 @@ moveWallToLeft();
 
 setInterval(()=>{
 
+    
     myBar.draw();
     myBall.draw();
     myCounter.drawCounter();

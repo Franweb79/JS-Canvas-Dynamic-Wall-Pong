@@ -1,5 +1,5 @@
 ## NOTES FOR DEVELOPERS
-
+//TODO check this if bugs are still or fixed
 1 - sometimes we have the bug that ball is "swallowed" by the moving wall.  Only happens with it, the other static walls of canvas work perfect.
 
 Seems it has something to do with the values of velX, coming positive or negative when ball collapses with moving wall. It seems we can solve the bug this way:
