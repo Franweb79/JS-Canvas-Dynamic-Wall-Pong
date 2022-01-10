@@ -12,3 +12,5 @@ Seems it has something to do with the values of velX, coming positive or negativ
 ## KNOWN BUGS
 
 - When the ball collapses with the wall in the very same moment it is moving to the left, ball partially disappears before bouncing again to the left
+
+- When ball is behind marker, it hides behind the rect we created to do the counter.

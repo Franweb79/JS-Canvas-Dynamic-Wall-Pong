@@ -59,26 +59,27 @@ export class Counter{
 
         /*
         I have calculated manually the position of a background rect 
-        to avoid numbers drawn one (-10 to width and -35 to height)
+        to avoid numbers drawn one (-60 to width and -35 to height)
         over another when counter increases 
         but must be a better way to calculate it //TODO this
 
-        width of the rect is 40 because when counter reaches 10 it needs more space to be "hid" previous counter value
+        width of the rect is 100 because when counter reaches 100 it needs more space to be "hid" previous counter value
+        (that both numbers are 100 is casual)
 
         */
 
-        ctx.fillRect(( myCanvas.width - relativeCanvasWidth )-10 , ( myCanvas.height - relativeCanvasHeight )-35, 60,40);
+        ctx.fillRect(( myCanvas.width - relativeCanvasWidth )-60 , ( myCanvas.height - relativeCanvasHeight )-35, 100,40);
 
         //we need to change color of context to make font visible again,
         //after painting as pink for the rect
 
         ctx.fillStyle="black";
 
-        /*-10 to the width, to avoid number hides on the wall when counter is more than 10
+        /*-60 to the width, to avoid number hides on the wall when counter is more than 100
         and screen has smaller size (for example, when inspector is opened)
         */
 
-        ctx.fillText( this.counter, ( myCanvas.width -  relativeCanvasWidth ) -10 , ( myCanvas.height - relativeCanvasHeight ) ) ;
+        ctx.fillText( this.counter, ( myCanvas.width -  relativeCanvasWidth ) -60 , ( myCanvas.height - relativeCanvasHeight ) ) ;
 
 
     }
