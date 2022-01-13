@@ -84,6 +84,12 @@ let initialPositionForBallX=0;
  */
 let initialPositionForBallY=0;
 
+/**
+ * to delete prior position of the ball
+ */
+let XPositionToDelete=0;
+let YPositionToDelete=0;
+
 
 
 

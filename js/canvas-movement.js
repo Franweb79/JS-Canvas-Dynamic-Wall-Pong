@@ -7,7 +7,7 @@ export let moveWallToLeft=()=>{
         }else{
             console.log ("ya es menos de 300",myCanvas.width)
         }
-    }, 1000);
+    }, 5000);
 }
 
 

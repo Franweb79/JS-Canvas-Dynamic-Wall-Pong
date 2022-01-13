@@ -104,9 +104,9 @@ export class Ball{
             console.log ("velx ",this.velX);
         }
 
-        //TODO  comentar bien esta logica en el read me
+        //TODO  comentar bien esta logica en el read me, es la logica para el rebote de la barra creo
        
-        if((this.isBallGluedAtBar==false) && (this.velX<0) ){
+       if((this.isBallGluedAtBar==false) && (this.velX<0) ){
             if(((this.x - this.size)>0) && ((this.x - this.size)<=(myBar.x + myBar.width))){
                 if( ( (this.y - this.size) >= myBar.y ) && ( (this.y - this.size) <= (myBar.y + myBar.height) ) ){
                     this.velX = -(this.velX);
@@ -115,9 +115,34 @@ export class Ball{
             }
         }
         
-//TODO aqui, quiz ala logica de cuando le meten gol
+//TODO aqui, la logica de cuando le meten gol
+//todo bug, algo pasa con la velocidad de la bola tras haber metido gol
+//y eclickear de nuevo, va como muy rapido y siempre mismo recorrido
         if((this.x - this.size) <= 0) {
-            this.velX = -(this.velX);
+           // this.velX = -(this.velX);
+
+           XPositionToDelete=this.x;
+           YPositionToDelete=this.y;
+
+           //set values of ball object to default
+           this.x=myBar.x+myBar.width+this.size;
+
+           this.y=myBar.y+(myBar.height/2) ;
+
+           this.velX=0;
+
+           this.velY=0;
+
+           this.isBallGluedAtBar=true;
+
+           ctx.beginPath();
+
+
+            ctx.fillStyle = myCanvas.backgroundColor;
+
+            ctx.arc(XPositionToDelete, YPositionToDelete, this.size+2, 0, 2 * Math.PI);
+               
+            ctx.fill();
 
             myCounter.updateCounter();
             
@@ -131,8 +156,17 @@ export class Ball{
 
         //with this, we will be able to paint prior ball position with same background color
         //to mimic its movement
-        let XPositionToDelete=this.x;
-        let YPositionToDelete=this.y;
+
+        /*TODO esto lo estamos haciendo tb en el if de la logica del gol arriba
+        //por que no se ejecuta tras salir del if directamente?
+        //y meter ese codigo repetido es un metodo ademas que es el mismo que este
+        //salvo por lo de +
+        this.x += this.velX;
+        this.y += this.velY;
+
+        */
+        XPositionToDelete=this.x;
+        YPositionToDelete=this.y;
 
         
         
