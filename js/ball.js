@@ -121,6 +121,8 @@ export class Ball{
         if((this.x - this.size) <= 0) {
            // this.velX = -(this.velX);
 
+           //console.log ("gol detele positions");
+
            XPositionToDelete=this.x;
            YPositionToDelete=this.y;
 
@@ -145,6 +147,11 @@ export class Ball{
             ctx.fill();
 
             myCounter.updateCounter();
+
+            
+           
+
+           
             
         }
         if((this.y + this.size) >= myCanvas.height) {
@@ -165,6 +172,8 @@ export class Ball{
         this.y += this.velY;
 
         */
+
+        //console.log ("delete fuera del gol");
         XPositionToDelete=this.x;
         YPositionToDelete=this.y;
 
@@ -211,6 +220,7 @@ export class Ball{
             ctx.fill();
 
 
+
     }
 
     loop(){
@@ -221,7 +231,7 @@ export class Ball{
          * we need it always go forward
          */
 
-        this.velX=4//randomNumber(1,3);
+        this.velX=0//randomNumber(1,3);
         this.velY=4//randomNumber(-7,7);
         setInterval(()=>{
             

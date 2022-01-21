@@ -106,6 +106,11 @@ myCanvas.addEventListener("click",(event)=>{
     
 
     if(myBall.isBallGluedAtBar){
+
+        console.log("pos x al click", myBall.x);
+        console.log ("pos y al click", myBall.y);
+        console.log("velocidad x al click", myBall.velX);
+        console.log ("velocidad y al click", myBall.velY);
         myBall.isBallGluedAtBar=false;
 
         /*myBall.velX=3;

@@ -3,9 +3,9 @@ export let moveWallToLeft=()=>{
     setInterval(() => {
         if(myCanvas.width>300){
            myCanvas.width=myCanvas.width-100;
-            console.log (myCanvas.width);
+            //console.log (myCanvas.width);
         }else{
-            console.log ("ya es menos de 300",myCanvas.width)
+            //console.log ("ya es menos de 300",myCanvas.width)
         }
     }, 5000);
 }
