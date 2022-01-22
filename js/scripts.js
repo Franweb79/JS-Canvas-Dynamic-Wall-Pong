@@ -26,7 +26,7 @@ initialPositionForBallY=myBar.y+(myBar.height/2);
 
 let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',ballSize);
 
-//TODO a ver por que a veces se ralentiza
+//TODO a ver por que a veces se ralentiza o acelera, mirar si es cuando a veces movemos la barra o que
 // que si la bola choca con la barra pero no es justo en el borde, igual debe rebotar tb
 //TODO change ball speed at certain time
 //TODO make bar smaller at time wall moves to the left
@@ -118,8 +118,12 @@ myCanvas.addEventListener("click",(event)=>{
         myBall.update();
 
         myBall.draw();*/
+        
+            myBall.loop();
 
-        myBall.loop();
+        
+
+        
     }
 });
 

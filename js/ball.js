@@ -121,7 +121,16 @@ export class Ball{
         if((this.x - this.size) <= 0) {
            // this.velX = -(this.velX);
 
-           //console.log ("gol detele positions");
+           /*
+            as explained on the loop() method, we have to clear the interval
+            inside loop() when we have a goal, this way we prevent the update() 
+            and draw() inside the loop from keeping on being executed,
+            and we have the same behavior as when ball is slicked for the first time.
+            Otherwise the ball starts going each time faster, maybe because 
+            that update() and draw() inside the loop() causes ball being updated and drawn
+            more times?
+           */
+           clearInterval(loopInterval);
 
            XPositionToDelete=this.x;
            YPositionToDelete=this.y;
@@ -231,9 +240,18 @@ export class Ball{
          * we need it always go forward
          */
 
-        this.velX=0//randomNumber(1,3);
-        this.velY=4//randomNumber(-7,7);
-        setInterval(()=>{
+        this.velX=1//randomNumber(1,3);
+        this.velY=0//randomNumber(-7,7);
+
+        /*
+            it seems, to avoid each time we have a goal,
+            we have to clear the interval on the update() method
+            inside the logic which controls the goal.
+            Otherwise ball goes each time faster.
+            Cleaning this interval we ensure everythign is like at the beginning
+            with no loop and anything executing
+        */
+        window.loopInterval=setInterval(()=>{
             
 
             this.update();
