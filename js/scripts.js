@@ -36,7 +36,7 @@ let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',
 //global, because we need it increase it on ball.js when ball is <=0
 window.myCounter= new Counter(0,48);
 
-moveWallToLeft();
+//moveWallToLeft();
 
 
 /*
@@ -119,7 +119,7 @@ myCanvas.addEventListener("click",(event)=>{
 
         myBall.draw();*/
         
-            myBall.loop();
+        myBall.loop();
 
         
 

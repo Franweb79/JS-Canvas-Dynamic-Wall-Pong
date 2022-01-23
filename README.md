@@ -7,10 +7,12 @@ Seems it has something to do with the values of velX, coming positive or negativ
 - If for any reason velX comes negative (should not, but happens), 
     we maintain it negative to force it moving to the left. Otherwise ball would dissappear to the right. 
 
-2- We declare myBar as a global variable inside the module because using export to make it available on other modules on other modules and using would give problems. For example myBar is declared on scripts.js, that means after the definition of the Ball class on ball.js, which on its update() method needs a reference to the bar. I find for now this is the easiest way to solve it
+2- We declare myBar as a global variable with the 'window' keyword. Using export to make it available on other modules would give problems. For example myBar is declared on scripts.js, that means it is done after the definition of the Ball class on ball.js, which on its update() method needs a reference to myBar and otherwise would be harder to have that reference. I find for now this is the easiest way to solve it
 
 ## KNOWN BUGS
 
 - When the ball collapses with the wall in the very same moment it is moving to the left, ball partially disappears before bouncing again to the left
 
 - When ball is behind marker, it hides behind the rect we created to do the counter.
+
+- Sometimes when I move the bar, the ball´s speed changes, should not do

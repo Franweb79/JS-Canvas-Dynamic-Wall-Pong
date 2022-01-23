@@ -156,7 +156,7 @@ export class Ball{
                
             ctx.fill();
 
-           myCounter.restartCounter();
+            myCounter.restartCounter();
 
             
            
@@ -241,8 +241,8 @@ export class Ball{
          * we need it always go forward
          */
 
-        this.velX=1//randomNumber(1,3);
-        this.velY=0//randomNumber(-7,7);
+        this.velX=2//randomNumber(1,3);
+        this.velY=2//randomNumber(-7,7);
 
         /*
             it seems, to avoid each time we have a goal,
