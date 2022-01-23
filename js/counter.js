@@ -93,4 +93,12 @@ export class Counter{
 
 
     }
+
+    /**
+     * will be used when user fails to catch the ball with the bar
+     */
+
+    restartCounter(){
+        myCounter.counter=0;
+    }
 }

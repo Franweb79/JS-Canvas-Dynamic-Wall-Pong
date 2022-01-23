@@ -34,7 +34,7 @@ let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',
 //TODO intenta poner las variables creadas aqui en variables.js
 
 //global, because we need it increase it on ball.js when ball is <=0
-window.myCounter= new Counter(99,48);
+window.myCounter= new Counter(0,48);
 
 moveWallToLeft();
 

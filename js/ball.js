@@ -85,7 +85,6 @@ export class Ball{
     */
     update(){
 
-        //TODO bug, when ball collapses at the same time wall is moving, is disappears for a little while before bouncing. should fix
         
         if((this.x + this.size) >= myCanvas.width) {
             /*
@@ -110,6 +109,8 @@ export class Ball{
             if(((this.x - this.size)>0) && ((this.x - this.size)<=(myBar.x + myBar.width))){
                 if( ( (this.y - this.size) >= myBar.y ) && ( (this.y - this.size) <= (myBar.y + myBar.height) ) ){
                     this.velX = -(this.velX);
+
+                    myCounter.updateCounter();
 
                 }
             }
@@ -155,7 +156,7 @@ export class Ball{
                
             ctx.fill();
 
-            myCounter.updateCounter();
+           myCounter.restartCounter();
 
             
            
