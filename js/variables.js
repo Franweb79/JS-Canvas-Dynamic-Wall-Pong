@@ -85,11 +85,22 @@ let initialPositionForBallX=0;
 let initialPositionForBallY=0;
 
 /**
- * to delete prior position of the ball
+ * to delete prior X position of the ball
  */
+
 let XPositionToDelete=0;
+
+/**
+ *   to delete prior Y position of the ball
+ */
 let YPositionToDelete=0;
 
-
+/**
+ * this will be used inside scripts.js, on the click event,
+ * to set an interval of same time interval as the wall moving to the left
+ * Since it will store a setInterval, we initialize as an empty function now
+ * to avoid it is not initialized
+ * */
+let speedUpInterval=function(){};
 
 

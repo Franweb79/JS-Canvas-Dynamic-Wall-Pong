@@ -132,6 +132,8 @@ export class Ball{
             more times?
            */
            clearInterval(loopInterval);
+           //also clear the speedUpInterval
+           clearInterval(speedUpInterval);
 
            XPositionToDelete=this.x;
            YPositionToDelete=this.y;
@@ -260,5 +262,7 @@ export class Ball{
         },0);
     }
 
+   
+    
 }
 

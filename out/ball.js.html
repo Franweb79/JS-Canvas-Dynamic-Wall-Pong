@@ -113,7 +113,6 @@ export class Ball{
     */
     update(){
 
-        //TODO bug, when ball collapses at the same time wall is moving, is disappears for a little while before bouncing. should fix
         
         if((this.x + this.size) >= myCanvas.width) {
             /*
@@ -132,20 +131,68 @@ export class Ball{
             console.log ("velx ",this.velX);
         }
 
-        //TODO  comentar bien esta logica en el read me
+        //TODO  comentar bien esta logica en el read me, es la logica para el rebote de la barra creo
        
-        if((this.isBallGluedAtBar==false) &amp;&amp; (this.velX&lt;0) ){
+       if((this.isBallGluedAtBar==false) &amp;&amp; (this.velX&lt;0) ){
             if(((this.x - this.size)>0) &amp;&amp; ((this.x - this.size)&lt;=(myBar.x + myBar.width))){
                 if( ( (this.y - this.size) >= myBar.y ) &amp;&amp; ( (this.y - this.size) &lt;= (myBar.y + myBar.height) ) ){
                     this.velX = -(this.velX);
+
+                    myCounter.updateCounter();
 
                 }
             }
         }
         
-
+//TODO aqui, la logica de cuando le meten gol
+//todo bug, algo pasa con la velocidad de la bola tras haber metido gol
+//y eclickear de nuevo, va como muy rapido y siempre mismo recorrido
         if((this.x - this.size) &lt;= 0) {
-            this.velX = -(this.velX);
+           // this.velX = -(this.velX);
+
+           /*
+            as explained on the loop() method, we have to clear the interval
+            inside loop() when we have a goal, this way we prevent the update() 
+            and draw() inside the loop from keeping on being executed,
+            and we have the same behavior as when ball is slicked for the first time.
+            Otherwise the ball starts going each time faster, maybe because 
+            that update() and draw() inside the loop() causes ball being updated and drawn
+            more times?
+           */
+           clearInterval(loopInterval);
+           //also clear the speedUpInterval
+           clearInterval(speedUpInterval);
+
+           XPositionToDelete=this.x;
+           YPositionToDelete=this.y;
+
+           //set values of ball object to default
+           this.x=myBar.x+myBar.width+this.size;
+
+           this.y=myBar.y+(myBar.height/2) ;
+
+           this.velX=0;
+
+           this.velY=0;
+
+           this.isBallGluedAtBar=true;
+
+           ctx.beginPath();
+
+
+            ctx.fillStyle = myCanvas.backgroundColor;
+
+            ctx.arc(XPositionToDelete, YPositionToDelete, this.size+2, 0, 2 * Math.PI);
+               
+            ctx.fill();
+
+            myCounter.restartCounter();
+
+            
+           
+
+           
+            
         }
         if((this.y + this.size) >= myCanvas.height) {
             this.velY = -(this.velY);
@@ -156,8 +203,19 @@ export class Ball{
 
         //with this, we will be able to paint prior ball position with same background color
         //to mimic its movement
-        let XPositionToDelete=this.x;
-        let YPositionToDelete=this.y;
+
+        /*TODO esto lo estamos haciendo tb en el if de la logica del gol arriba
+        //por que no se ejecuta tras salir del if directamente?
+        //y meter ese codigo repetido es un metodo ademas que es el mismo que este
+        //salvo por lo de +
+        this.x += this.velX;
+        this.y += this.velY;
+
+        */
+
+        //console.log ("delete fuera del gol");
+        XPositionToDelete=this.x;
+        YPositionToDelete=this.y;
 
         
         
@@ -202,6 +260,7 @@ export class Ball{
             ctx.fill();
 
 
+
     }
 
     loop(){
@@ -212,9 +271,18 @@ export class Ball{
          * we need it always go forward
          */
 
-        this.velX=4//randomNumber(1,3);
-        this.velY=4//randomNumber(-7,7);
-        setInterval(()=>{
+        this.velX=2//randomNumber(1,3);
+        this.velY=2//randomNumber(-7,7);
+
+        /*
+            it seems, to avoid each time we have a goal,
+            we have to clear the interval on the update() method
+            inside the logic which controls the goal.
+            Otherwise ball goes each time faster.
+            Cleaning this interval we ensure everythign is like at the beginning
+            with no loop and anything executing
+        */
+        window.loopInterval=setInterval(()=>{
             
 
             this.update();
@@ -222,6 +290,8 @@ export class Ball{
         },0);
     }
 
+   
+    
 }
 
 </code></pre>
@@ -234,13 +304,13 @@ export class Ball{
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Ball.html">Ball</a></li><li><a href="Bar.html">Bar</a></li><li><a href="Counter.html">Counter</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ctx">ctx</a></li><li><a href="global.html#initialPositionForBallX">initialPositionForBallX</a></li><li><a href="global.html#initialPositionForBallY">initialPositionForBallY</a></li><li><a href="global.html#myBackground">myBackground</a></li><li><a href="global.html#myCanvas">myCanvas</a></li><li><a href="global.html#randomColor">randomColor</a></li><li><a href="global.html#randomNumber">randomNumber</a></li><li><a href="global.html#relativeCanvasWidth">relativeCanvasWidth</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Ball.html">Ball</a></li><li><a href="Bar.html">Bar</a></li><li><a href="Counter.html">Counter</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ctx">ctx</a></li><li><a href="global.html#initialPositionForBallX">initialPositionForBallX</a></li><li><a href="global.html#initialPositionForBallY">initialPositionForBallY</a></li><li><a href="global.html#myBackground">myBackground</a></li><li><a href="global.html#myCanvas">myCanvas</a></li><li><a href="global.html#randomColor">randomColor</a></li><li><a href="global.html#randomNumber">randomNumber</a></li><li><a href="global.html#relativeCanvasWidth">relativeCanvasWidth</a></li><li><a href="global.html#speedUpInterval">speedUpInterval</a></li><li><a href="global.html#XPositionToDelete">XPositionToDelete</a></li><li><a href="global.html#YPositionToDelete">YPositionToDelete</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Jan 03 2022 23:53:47 GMT+0100 (hora estándar de Europa central)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jan 25 2022 00:02:22 GMT+0100 (hora estándar de Europa central)
 </footer>
 
 <script> prettyPrint(); </script>

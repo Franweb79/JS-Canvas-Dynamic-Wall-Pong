@@ -121,7 +121,41 @@ myCanvas.addEventListener("click",(event)=>{
         
         myBall.loop();
 
+        /*
+        at same time interval that wall moves to the left,will increase 
+        speedball on X and Y by 0.5
+        Note that, as value can be negatives, then we must use a different operation
+        ( + or - ), because otherwise if e.g valX is -2 and we simply do +0.5
+        that would make it slower
+
+        This interval will be cleared when user fails to get the ball with the bar
+        on ball.js
         
+        */
+        speedUpInterval=setInterval(()=>{
+
+            if(myBall.velX<0){
+                myBall.velX= (myBall.velX-0.5);
+            }else{
+                myBall.velX= (myBall.velX+0.5);
+
+            }
+
+            if(myBall.velY<0){
+                myBall.velY=myBall.velY-0.5;
+            }else{
+                myBall.velY=myBall.velY+0.5;
+
+            }
+
+            
+           // myBall.velY=parseInt( myBall.velY+2);
+
+            console.log ("upspeedx",myBall.velX);
+            console.log ("upspeedy",myBall.velY);
+
+
+        },5000);
 
         
     }
