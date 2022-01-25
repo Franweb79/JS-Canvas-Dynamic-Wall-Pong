@@ -1,5 +1,5 @@
 
-
+//TODO trata de meter todas las variables aqui, aunque sea usando el window.
 /**
  * 
  * myCanvas in this case can´t be const because it will change size
@@ -100,7 +100,17 @@ let YPositionToDelete=0;
  * to set an interval of same time interval as the wall moving to the left
  * Since it will store a setInterval, we initialize as an empty function now
  * to avoid it is not initialized
+ * 
+ * Will be cleaned with clearInterval when user can´t get the ball
  * */
 let speedUpInterval=function(){};
+
+/**
+ * used in scripts.js on the click event to make bar smaller at certain time interval
+ *  * Will be cleaned with clearInterval when user can´t get the ball
+
+ */
+
+let barSizeDownInterval=function(){};
 
 

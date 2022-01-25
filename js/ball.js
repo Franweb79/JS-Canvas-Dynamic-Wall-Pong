@@ -132,8 +132,15 @@ export class Ball{
             more times?
            */
            clearInterval(loopInterval);
-           //also clear the speedUpInterval
+           //also clear the speedUpInterval and barSizeDownInterval
            clearInterval(speedUpInterval);
+           clearInterval(barSizeDownInterval);
+
+           //but now we must delete old bar, and restore original size and draw it again
+
+           myBar.deleteOldRectangle();
+           myBar.height=175;
+           myBar.draw();
 
            XPositionToDelete=this.x;
            YPositionToDelete=this.y;

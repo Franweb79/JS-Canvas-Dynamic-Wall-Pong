@@ -34,9 +34,9 @@ let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',
 //TODO intenta poner las variables creadas aqui en variables.js
 
 //global, because we need it increase it on ball.js when ball is <=0
-window.myCounter= new Counter(0,48);
+ window.myCounter= new Counter(0,48);
 
-//moveWallToLeft();
+ moveWallToLeft();
 
 
 /*
@@ -102,6 +102,12 @@ myCanvas.addEventListener("mousemove",(event)=>{
   
 });
 
+/**
+ * on this event we will control if it is frist click (with ball glued at bar),
+ * in that case we start the loop as well as the intervals to make
+ * ball´s speed up increase and make bar size smaller at a certain time rate
+ * that time rate must be the same specified for moveWallToTheLeft()
+ */
 myCanvas.addEventListener("click",(event)=>{
     
 
@@ -157,6 +163,23 @@ myCanvas.addEventListener("click",(event)=>{
 
         },5000);
 
+
+        
+        barSizeDownInterval=setInterval(() => {
+
+            //we set a bar minimum to 50
+            if(myBar.height>50){
+
+                /*we delete old rectangle with old size, decrease size and then draw new bar*/
+
+                myBar.deleteOldRectangle();
+                myBar.height-=25;
+                myBar.draw();
+                console.log ("barr height",myBar.height);
+
+            }
+            
+        }, 5000);
         
     }
 });
