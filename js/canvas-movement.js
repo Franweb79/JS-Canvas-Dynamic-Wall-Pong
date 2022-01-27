@@ -1,11 +1,14 @@
 
+/**
+ * if width of the canvas (violet background) is more than 300,
+ * each certain interval we move the right side to show a draw.
+ * Effect is if like someone was pushing the wall to the left
+ */
 export let moveWallToLeft=()=>{
     setInterval(() => {
         if(myCanvas.width>300){
            myCanvas.width=myCanvas.width-100;
-            //console.log (myCanvas.width);
-        }else{
-            //console.log ("ya es menos de 300",myCanvas.width)
+           
         }
     }, 5000);
 }
@@ -13,4 +16,3 @@ export let moveWallToLeft=()=>{
 
 
 
-//todo do with modules, why cant properly do global variables with variables.js and why it says movement.js didnt loaded beacuse of mime but it works

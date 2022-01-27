@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: bar.js</title>
+    <title>JSDoc: Source: canvas-movement.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: bar.js</h1>
+    <h1 class="page-title">Source: canvas-movement.js</h1>
 
     
 
@@ -28,70 +28,23 @@
         <article>
             <pre class="prettyprint source linenums"><code>
 /**
- * Bar is the call used to create the bar or cursor. The object will be instantiated
- * as global with the window object on the scripts.js because we need it to be accesible to all
- * the other modules
+ * if width of the canvas (violet background) is more than 300,
+ * each certain interval we move the right side to show a draw.
+ * Effect is if like someone was pushing the wall to the left
  */
-export class Bar{
-
-    /**
-     * 
-     * @param {*} x 
-     * @param {*} y 
-     * @param {*} width 
-     * @param {*} height 
-     */
-    constructor(x,y,width, height){
-
-    /**
-     * -x and y coordinates — the horizontal and vertical coordinates where the ball starts on the screen. This can range between 0 (top left hand corner) to the width and height of the browser viewport (bottom right hand corner). 
-     */
-     this.x=x;
-     /** */
-     this.y=y;
-     /** width of the bar*/
-     this.width=width;
-     /**height of the bar */
-     this.height=height;
-    
-    }
-
-    /**
-     * method used to draw the bar
-     */
-    draw(){
-
-        /*
-            First, we use beginPath() to state that we want 
-            to draw a shape on the paper.
-      
-        */
-        ctx.beginPath();
-
-       //bar will be red
-        ctx.fillStyle = "red";
-
-        //this logic will prevent bar from trespassing bottom of the canvas
-        if(this.y > (myCanvas.height - this.height)){
-            this.y = myCanvas.height - this.height;
+export let moveWallToLeft=()=>{
+    setInterval(() => {
+        if(myCanvas.width>300){
+           myCanvas.width=myCanvas.width-100;
+           
         }
-
-        //fillRect() will draw the rectangle
-        ctx.fillRect(this.x, this.y, this.width, this.height);
-        
-    }
-
-    /**
-     * This will be used to delete the old position of the bar when we move it
-     */
-    deleteOldRectangle(){
-        
-        ctx.clearRect(this.x, this.y, this.width, this.height);
-      
-    }
+    }, 5000);
 }
 
-</code></pre>
+
+
+
+//todo do with modules, why cant properly do global variables with variables.js and why it says movement.js didnt loaded beacuse of mime but it works</code></pre>
         </article>
     </section>
 
