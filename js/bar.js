@@ -4,7 +4,6 @@
  * as global with the window object on the scripts.js because we need it to be accesible to all
  * the other modules
  */
-
 export class Bar{
 
     /**
@@ -34,25 +33,29 @@ export class Bar{
      */
     draw(){
 
-        //First, we use beginPath() to state that we want to draw a shape on the paper.
-       //console.log ("dibujar barra",(this.x+this.width));
+        /*
+            First, we use beginPath() to state that we want 
+            to draw a shape on the paper.
+      
+        */
         ctx.beginPath();
 
-       
+       //bar will be red
         ctx.fillStyle = "red";
 
-        //this will prevent bar from trespassing bottom of the canvas
+        //this logic will prevent bar from trespassing bottom of the canvas
         if(this.y > (myCanvas.height - this.height)){
             this.y = myCanvas.height - this.height;
         }
 
+        //fillRect() will draw the rectangle
         ctx.fillRect(this.x, this.y, this.width, this.height);
         
     }
-    /**
-     * This will be used to delete the old position when we move the bar
-     */
 
+    /**
+     * This will be used to delete the old position of the bar when we move it
+     */
     deleteOldRectangle(){
         
         ctx.clearRect(this.x, this.y, this.width, this.height);
