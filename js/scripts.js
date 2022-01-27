@@ -8,7 +8,8 @@ import {Counter} from './counter.js';
 
 /**
  * myBar is declared as global with the window keyword, because we need it
- * this way. SEE NOTES FOR DEVELOPERS NUMBER 2 FOR DETAILS
+ * this way. SEE NOTES FOR DEVELOPERS NUMBER xxx FOR DETAILS 
+ * //TODO on readme put number to this note
  * 
  * 
  */

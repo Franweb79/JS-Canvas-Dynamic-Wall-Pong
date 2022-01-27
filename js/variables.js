@@ -96,6 +96,12 @@ let XPositionToDelete=0;
 let YPositionToDelete=0;
 
 /**
+ * this loop will be called inside ball.js loop() method, and it will update
+ * ball status and draw it again constantly
+ */
+let loopInterval=function(){};
+
+/**
  * this will be used inside scripts.js, on the click event,
  * to set an interval of same time interval as the wall moving to the left
  * Since it will store a setInterval, we initialize as an empty function now
@@ -107,10 +113,9 @@ let speedUpInterval=function(){};
 
 /**
  * used in scripts.js on the click event to make bar smaller at certain time interval
- *  * Will be cleaned with clearInterval when user can´t get the ball
+ * Will be cleaned with clearInterval when user can´t get the ball
 
  */
-
 let barSizeDownInterval=function(){};
 
 
