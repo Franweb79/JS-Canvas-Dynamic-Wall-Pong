@@ -33,6 +33,21 @@ That is done to mimic the ball movement through the canvas, something we don´t 
 
 //TODO this could be refactored possibly
 
+5 - position of the counter will be stored on theses 2 variables
+
+    relativeCanvasWidth. It will be the 20% of the  total width the canvas has each time wall moves to the left, and I will discount another 10 px to make distance between canvas border and counter bigger (otherwise it would collapse)
+
+    and
+
+    relativeCanvasHeight. actually this is not necessary since canvas height should be always the same (this is not a responsive app) but to make a cleaner code is helpful
+
+6 -  I have calculated manually the position of a background rect to avoid numbers drawn one over another when counter increases. It is set to (-60 to width and -35 to height), but must be a better way to calculate it //TODO this.
+
+Width of the rect is 100 because when counter reaches 100 ( 3 numbers length) it needs more space to "hid" previous counter value
+       
+
+
+
 xxx - We declare myBar as a global variable with the 'window' keyword. Using export to make it available on other modules would give problems. For example myBar is declared on scripts.js, that means it is done after the definition of the Ball class on ball.js, which on its update() method needs a reference to myBar and otherwise would be harder to have that reference. I find for now this is the easiest way to solve it
 
 ## KNOWN BUGS

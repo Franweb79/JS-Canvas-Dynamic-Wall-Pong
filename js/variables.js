@@ -9,6 +9,19 @@
 
 let myCanvas = document.getElementById('myCanvas');
 
+/**
+ * These variables will be used to store the counter
+ * position later on counter.js inside drawCounter() method
+ * 
+ * initial values of relativeCansdWidth and relativeCanvasHeight
+ * will be the total size of canvas. Later values will be changed
+ * on drawCounter() method, as said.
+ */
+ let relativeCanvasWidth=myCanvas.width;
+
+ /** */
+ let relativeCanvasHeight=myCanvas.height;
+
 
 /**
  * myBackground had to be absolute positioned to make it work,

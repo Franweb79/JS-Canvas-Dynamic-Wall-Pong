@@ -27,14 +27,7 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>
-/**
- * initial values of relativeCansdWidth and relativeCanvasHeight
- * will be the total size of canvas. Later values will be changed
- * on drawCounter() method
- */
- let relativeCanvasWidth=myCanvas.width;
 
- let relativeCanvasHeight=myCanvas.height;
 
  /**
  * we create a counter class because I need it to be evertytime drawn. Otherwise
@@ -63,48 +56,46 @@ export class Counter{
     drawCounter(){
 
 
-        //fontsize declared on variables.js
         ctx.font = `${this.fontSize}px serif`;
-
-        /**
-         * to make a cleaner code we store this  operation on a variable.
-         * It will be the 20% of the  total width the canvas has each time 
-         * wall moves to the left, and I will discount another 10 px to 
-         * make distance between canvas border and counter bigger (otherwise it would
-         * collapse)
-         */
+        
+        /*
+            CHECK README NOTES FOR DEVELOPERS NUMBER 5
+        */
+        
         relativeCanvasWidth = ( (myCanvas.width*20) / 100) - 10;
 
-        /**
-         * actually this is not necessary since canvas height should be always the same
-         * (this is not a responsive app)
-         * but to make a cleaner code is helpful
+        /*
+            CHECK README NOTES FOR DEVELOPERS NUMBER 5
          */
         relativeCanvasHeight = (myCanvas.height*90) /100;
 
-        //tyo make rect be same color as background
+        /*
+            this will be the background color of a rect 
+           where counter will be. background color will be same as canvas one
+
+        */
         ctx.fillStyle="#8a2be2";
 
         /*
-        I have calculated manually the position of a background rect 
-        to avoid numbers drawn one (-60 to width and -35 to height)
-        over another when counter increases 
-        but must be a better way to calculate it //TODO this
 
-        width of the rect is 100 because when counter reaches 100 it needs more space to be "hid" previous counter value
-        (that both numbers are 100 is casual)
+            CHECK README NOTES FOR DEVELOPERS NUMBER 6
+
+       
 
         */
 
         ctx.fillRect(( myCanvas.width - relativeCanvasWidth )-60 , ( myCanvas.height - relativeCanvasHeight )-35, 100,40);
 
-        //we need to change color of context to make font visible again,
-        //after painting as pink for the rect
+        /*
+            we need to change color of context to make font visible again,
+            after painting as pink for the rect
+        */
 
         ctx.fillStyle="black";
 
-        /*-60 to the width, to avoid number hides on the wall when counter is more than 100
-        and screen has smaller size (for example, when inspector is opened)
+        /*
+            -60 to the width, to avoid number hides on the wall when counter is more than 100
+            and screen has smaller size (for example, when browser inspector is opened)
         */
 
         ctx.fillText( this.counter, ( myCanvas.width -  relativeCanvasWidth ) -60 , ( myCanvas.height - relativeCanvasHeight ) ) ;
@@ -125,7 +116,6 @@ export class Counter{
     /**
      * will be used when user fails to catch the ball with the bar
      */
-
     restartCounter(){
         myCounter.counter=0;
     }
@@ -140,13 +130,13 @@ export class Counter{
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Ball.html">Ball</a></li><li><a href="Bar.html">Bar</a></li><li><a href="Counter.html">Counter</a></li></ul><h3>Global</h3><ul><li><a href="global.html#barSizeDownInterval">barSizeDownInterval</a></li><li><a href="global.html#ctx">ctx</a></li><li><a href="global.html#initialPositionForBallX">initialPositionForBallX</a></li><li><a href="global.html#initialPositionForBallY">initialPositionForBallY</a></li><li><a href="global.html#loopInterval">loopInterval</a></li><li><a href="global.html#moveWallToLeft">moveWallToLeft</a></li><li><a href="global.html#myBackground">myBackground</a></li><li><a href="global.html#myCanvas">myCanvas</a></li><li><a href="global.html#randomColor">randomColor</a></li><li><a href="global.html#randomNumber">randomNumber</a></li><li><a href="global.html#relativeCanvasWidth">relativeCanvasWidth</a></li><li><a href="global.html#speedUpInterval">speedUpInterval</a></li><li><a href="global.html#XPositionToDelete">XPositionToDelete</a></li><li><a href="global.html#YPositionToDelete">YPositionToDelete</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Ball.html">Ball</a></li><li><a href="Bar.html">Bar</a></li><li><a href="Counter.html">Counter</a></li></ul><h3>Global</h3><ul><li><a href="global.html#barSizeDownInterval">barSizeDownInterval</a></li><li><a href="global.html#ctx">ctx</a></li><li><a href="global.html#initialPositionForBallX">initialPositionForBallX</a></li><li><a href="global.html#initialPositionForBallY">initialPositionForBallY</a></li><li><a href="global.html#loopInterval">loopInterval</a></li><li><a href="global.html#moveWallToLeft">moveWallToLeft</a></li><li><a href="global.html#myBackground">myBackground</a></li><li><a href="global.html#myCanvas">myCanvas</a></li><li><a href="global.html#randomColor">randomColor</a></li><li><a href="global.html#randomNumber">randomNumber</a></li><li><a href="global.html#relativeCanvasHeight">relativeCanvasHeight</a></li><li><a href="global.html#relativeCanvasWidth">relativeCanvasWidth</a></li><li><a href="global.html#speedUpInterval">speedUpInterval</a></li><li><a href="global.html#XPositionToDelete">XPositionToDelete</a></li><li><a href="global.html#YPositionToDelete">YPositionToDelete</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Thu Jan 27 2022 05:07:04 GMT+0100 (hora estándar de Europa central)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Jan 28 2022 01:06:14 GMT+0100 (hora estándar de Europa central)
 </footer>
 
 <script> prettyPrint(); </script>
