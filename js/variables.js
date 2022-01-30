@@ -80,6 +80,12 @@ let randomColor=()=>{
 
 }
 
+/**
+    ballSize (size is radius), must be added to the calculation of ball 
+    initialPositionForBallX and initialPositionForBallY to make ball collapse with bar border
+*/
+const ballSize=10;
+
 /*
     initial position for ball will be done here because is easier,
     we have to access bar's x and y positions to calculate so maybe

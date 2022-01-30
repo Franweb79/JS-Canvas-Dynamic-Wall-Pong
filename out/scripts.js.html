@@ -36,33 +36,20 @@ import {Counter} from './counter.js';
 
 /**
  * myBar is declared as global with the window keyword, because we need it
- * this way. SEE NOTES FOR DEVELOPERS NUMBER xxx FOR DETAILS 
- * //TODO on readme put number to this note
- * 
+ * this way. SEE READ ME NOTES FOR DEVELOPERS NUMBER 7 FOR DETAILS  
  * 
  */
-
 window.myBar=new Bar(25,25,25,175);
 
-const ballSize=10;
 
-/*
-    ballSize (size is radius), must be added to make ball collapse with bar border
-*/
 initialPositionForBallX=myBar.x+myBar.width+ballSize;
 initialPositionForBallY=myBar.y+(myBar.height/2);
 
 
 let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',ballSize);
 
-//TODO a ver por que a veces se ralentiza o acelera, mirar si es cuando a veces movemos la barra o que
-// que si la bola choca con la barra pero no es justo en el borde, igual debe rebotar tb
-//TODO change ball speed at certain time
-//TODO make bar smaller at time wall moves to the left
-//TODO always ball must start slow
-//TODO intenta poner las variables creadas aqui en variables.js
 
-//global, because we need it increase it on ball.js when ball is &lt;=0
+//global variable, because we need a reference to increase it on ball.js when ball is &lt;=0
  window.myCounter= new Counter(0,48);
 
  moveWallToLeft();
@@ -70,10 +57,10 @@ let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',
 
 /*
 
-    with setInterval, I can do that bar and ball don´t delet if mouse event is not
-    fired, that means for example if mouse is not inside the canvas
+    with setInterval, I can do that bar and ball don´t delete if mouse event is not
+    fired, that means for example if mouse is not used inside the canvas
 
-    timer is set to 0 so it is drawn "instantly"
+    timer is set to 0 so things are drawn "instantly"
 */
 
 setInterval(()=>{
@@ -89,21 +76,21 @@ setInterval(()=>{
 },0);
 
 /*
-    we draw again bar and ball when mouse event,
+    we draw again bar and ball when mouse move event,
   
 */
 myCanvas.addEventListener("mousemove",(event)=>{
 
     
     myBar.deleteOldRectangle();
-    myBar.y=event.pageY;//new rectangle will start where pageY
+    myBar.y=event.pageY;//new bar position will start where pageY
     myBar.draw();
 
-    //myBall.draw();
 
     /*
-        if ball is glued to the bar, must follow it,
-        so will be redraw with relative values to the bar, like at the beginning
+        if ball is "glued" to the bar (when we start the game or we had one "goal"), 
+        the ball must be kept on glued to the bar when we move it,
+        so ball will be re-draw with relative values to the bar, like at the beginning
         but with new values
     */
 
@@ -112,10 +99,9 @@ myCanvas.addEventListener("mousemove",(event)=>{
             initialPositionForBallX=myBar.x+myBar.width+ballSize;
             initialPositionForBallY=myBar.y+(myBar.height/2);
 
-           /* console.log( initialPositionForBallX);
-            console.log(initialPositionForBallY);*/
+        
 
-            //delete old position, code for it is inside update method
+            //delete old ball position, code for it is inside update method
             myBall.update();
 
             //set new initial positions fot the ball, relative to the bar
@@ -123,7 +109,6 @@ myCanvas.addEventListener("mousemove",(event)=>{
             myBall.x=initialPositionForBallX;
             myBall.y=initialPositionForBallY;
 
-           // myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,randomColor(),ballSize);
 
             myBall.draw();
 
@@ -132,8 +117,8 @@ myCanvas.addEventListener("mousemove",(event)=>{
 });
 
 /**
- * on this event we will control if it is frist click (with ball glued at bar),
- * in that case we start the loop as well as the intervals to make
+ * on this click event we will control if it is first click (with ball glued at bar),
+ * in that case we start the loop as well and the intervals to make
  * ball´s speed up increase and make bar size smaller at a certain time rate
  * that time rate must be the same specified for moveWallToTheLeft()
  */
@@ -142,24 +127,16 @@ myCanvas.addEventListener("click",(event)=>{
 
     if(myBall.isBallGluedAtBar){
 
-        console.log("pos x al click", myBall.x);
-        console.log ("pos y al click", myBall.y);
-        console.log("velocidad x al click", myBall.velX);
-        console.log ("velocidad y al click", myBall.velY);
+        
         myBall.isBallGluedAtBar=false;
-
-        /*myBall.velX=3;
-        myBall.velY=3;
-        myBall.update();
-
-        myBall.draw();*/
         
         myBall.loop();
 
         /*
         at same time interval that wall moves to the left,will increase 
         speedball on X and Y by 0.5
-        Note that, as value can be negatives, then we must use a different operation
+
+        Note that, as velX and valY can be negative, then we must use a different operation
         ( + or - ), because otherwise if e.g valX is -2 and we simply do +0.5
         that would make it slower
 
@@ -183,12 +160,6 @@ myCanvas.addEventListener("click",(event)=>{
 
             }
 
-            
-           // myBall.velY=parseInt( myBall.velY+2);
-
-            console.log ("upspeedx",myBall.velX);
-            console.log ("upspeedy",myBall.velY);
-
 
         },5000);
 
@@ -204,7 +175,6 @@ myCanvas.addEventListener("click",(event)=>{
                 myBar.deleteOldRectangle();
                 myBar.height-=25;
                 myBar.draw();
-                console.log ("barr height",myBar.height);
 
             }
             
@@ -224,13 +194,13 @@ myCanvas.addEventListener("click",(event)=>{
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Ball.html">Ball</a></li><li><a href="Bar.html">Bar</a></li><li><a href="Counter.html">Counter</a></li></ul><h3>Global</h3><ul><li><a href="global.html#barSizeDownInterval">barSizeDownInterval</a></li><li><a href="global.html#ctx">ctx</a></li><li><a href="global.html#initialPositionForBallX">initialPositionForBallX</a></li><li><a href="global.html#initialPositionForBallY">initialPositionForBallY</a></li><li><a href="global.html#loopInterval">loopInterval</a></li><li><a href="global.html#moveWallToLeft">moveWallToLeft</a></li><li><a href="global.html#myBackground">myBackground</a></li><li><a href="global.html#myCanvas">myCanvas</a></li><li><a href="global.html#randomColor">randomColor</a></li><li><a href="global.html#randomNumber">randomNumber</a></li><li><a href="global.html#relativeCanvasHeight">relativeCanvasHeight</a></li><li><a href="global.html#relativeCanvasWidth">relativeCanvasWidth</a></li><li><a href="global.html#speedUpInterval">speedUpInterval</a></li><li><a href="global.html#XPositionToDelete">XPositionToDelete</a></li><li><a href="global.html#YPositionToDelete">YPositionToDelete</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Ball.html">Ball</a></li><li><a href="Bar.html">Bar</a></li><li><a href="Counter.html">Counter</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ballSize">ballSize</a></li><li><a href="global.html#barSizeDownInterval">barSizeDownInterval</a></li><li><a href="global.html#ctx">ctx</a></li><li><a href="global.html#initialPositionForBallX">initialPositionForBallX</a></li><li><a href="global.html#initialPositionForBallY">initialPositionForBallY</a></li><li><a href="global.html#loopInterval">loopInterval</a></li><li><a href="global.html#moveWallToLeft">moveWallToLeft</a></li><li><a href="global.html#myBackground">myBackground</a></li><li><a href="global.html#myCanvas">myCanvas</a></li><li><a href="global.html#randomColor">randomColor</a></li><li><a href="global.html#randomNumber">randomNumber</a></li><li><a href="global.html#relativeCanvasHeight">relativeCanvasHeight</a></li><li><a href="global.html#relativeCanvasWidth">relativeCanvasWidth</a></li><li><a href="global.html#speedUpInterval">speedUpInterval</a></li><li><a href="global.html#XPositionToDelete">XPositionToDelete</a></li><li><a href="global.html#YPositionToDelete">YPositionToDelete</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Fri Jan 28 2022 01:06:14 GMT+0100 (hora estándar de Europa central)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon Jan 31 2022 00:54:22 GMT+0100 (hora estándar de Europa central)
 </footer>
 
 <script> prettyPrint(); </script>

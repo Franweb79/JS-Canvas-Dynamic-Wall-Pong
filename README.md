@@ -46,9 +46,7 @@ That is done to mimic the ball movement through the canvas, something we don´t 
 Width of the rect is 100 because when counter reaches 100 ( 3 numbers length) it needs more space to "hid" previous counter value
        
 
-
-
-xxx - We declare myBar as a global variable with the 'window' keyword. Using export to make it available on other modules would give problems. For example myBar is declared on scripts.js, that means it is done after the definition of the Ball class on ball.js, which on its update() method needs a reference to myBar and otherwise would be harder to have that reference. I find for now this is the easiest way to solve it
+7 - We declare myBar as a global variable with the 'window' keyword. Using export to make it available on other modules would give problems. myBar is declared on scripts.js, that means it is done after the definition of the Ball class on ball.js (ball.js is before on the script loading queue on index.html), which on its update() method needs a reference to myBar and otherwise would be harder to have that reference. I find for now this is the easiest way to solve it
 
 ## KNOWN BUGS
 
