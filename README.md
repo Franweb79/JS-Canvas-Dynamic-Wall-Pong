@@ -48,6 +48,11 @@ Width of the rect is 100 because when counter reaches 100 ( 3 numbers length) it
 
 7 - We declare myBar as a global variable with the 'window' keyword. Using export to make it available on other modules would give problems. myBar is declared on scripts.js, that means it is done after the definition of the Ball class on ball.js (ball.js is before on the script loading queue on index.html), which on its update() method needs a reference to myBar and otherwise would be harder to have that reference. I find for now this is the easiest way to solve it
 
+8 -  variables for initial X and Y positions for the ball will be declared  here because it is easier. As we also have to access bar's x and y positions to calculate that initial ball position, maybe it is better to do here than declaring those initial positions as ball object´s properties
+
+9 - this speedUpInterval will be used inside scripts.js, on the click event, to set an interval of same time interval as the wall moving to the left (e.g if moveWallToTheLeft() has an interval rate of 5000ms, this interval will have also 5000ms). 
+As the other variables used to store intervals later, and as setInterval is a function (a method of the window object actually), we initialize as an empty function to avoid the bad practice of not initializing variables
+
 ## KNOWN BUGS
 
 - As eplained at NOTES FOR DEVELOPERS NUMBER 1, When the ball collapses with the wall in the very same moment it is moving to the left, ball partially disappears before bouncing again to the left
