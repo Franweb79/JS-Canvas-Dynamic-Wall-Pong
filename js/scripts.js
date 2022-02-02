@@ -82,6 +82,11 @@ myCanvas.addEventListener("mousemove",(event)=>{
 
             myBall.draw();
 
+        }else
+        {
+            /* CHECK README NOTE FOR DEVELOPERS NUMBER 10*/
+            myBall.update();
+            myBall.draw();
         }
   
 });

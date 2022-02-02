@@ -53,12 +53,14 @@ Width of the rect is 100 because when counter reaches 100 ( 3 numbers length) it
 9 - this speedUpInterval will be used inside scripts.js, on the click event, to set an interval of same time interval as the wall moving to the left (e.g if moveWallToTheLeft() has an interval rate of 5000ms, this interval will have also 5000ms). 
 As the other variables used to store intervals later, and as setInterval is a function (a method of the window object actually), we initialize as an empty function to avoid the bad practice of not initializing variables
 
+10 - Despite it should not be neccessary, i created an else condition when checking if ball is glued to the bar or not (that means, if it is initial click or not). Seems updating and drawing the ball when we move the bar and ball is not glued (when game has already started), prevents ball speed from slowing down. But it seems it flows less fluid.
+
 ## KNOWN BUGS
 
 - As explained at NOTES FOR DEVELOPERS NUMBER 1, When the ball collapses with the wall in the very same moment it is moving to the left, ball partially disappears before bouncing again to the left
 
-- When ball is behind marker, it hides behind the rect we created to do the counter.
+- When ball is behind counter, it hides behind the rect we created to do the counter.
 
-- Sometimes when I move the bar, the ball´s speed slows down, should not do
+- Sometimes when I move the bar, the ball´s speed slows down, should not do. CHECK NOTES FOR DEVELOPERS NUMBER 10
 
 - Sometimes at the start of the game, the ball starts moving too fast

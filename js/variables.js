@@ -1,6 +1,4 @@
 
-let myLink=document.getElementById("linkFranPrieto");
-
 /**
  * 
  * myCanvas in this case can´t be declared as 'const' because canvas will change size
