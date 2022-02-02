@@ -3,8 +3,6 @@ import {Bar} from "./bar.js";
 import {Ball} from './ball.js';
 import {Counter} from './counter.js';
 
-//TODO apunta lo del window. para hacer la variable global 
-//   https://stackoverflow.com/questions/43605434/what-is-the-correct-way-to-define-global-variable-in-es6-modules-->
 
 /**
  * myBar is declared as global with the window keyword, because we need it

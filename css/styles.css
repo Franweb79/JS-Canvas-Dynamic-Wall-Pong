@@ -15,12 +15,15 @@ html, body {
     height: inherit;
   }
   
+  
   h1{
     font-size: 2rem;
     letter-spacing: -1px;
     position: absolute;
+    z-index:1;/*this is to make possible that user clicks link, otherwise,background
+    image wouldn allow it*/
     margin: 0;
-    top: -4px;
+    bottom: 8px;
     right: 5px;
   
     color: #000;
@@ -31,12 +34,13 @@ html, body {
     font-size: 2rem;
     letter-spacing: -1px;
     margin: 0;
-    top: -4px;
+    bottom: 8px;
     right: 5px;
     /*position absolute deleted for links, otherwise collpases*/
     color: #000;
     text-shadow: 0 0 4px white;
   }
+ 
  
 
 #myCanvas{

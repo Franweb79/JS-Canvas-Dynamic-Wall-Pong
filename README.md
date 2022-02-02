@@ -55,8 +55,10 @@ As the other variables used to store intervals later, and as setInterval is a fu
 
 ## KNOWN BUGS
 
-- As eplained at NOTES FOR DEVELOPERS NUMBER 1, When the ball collapses with the wall in the very same moment it is moving to the left, ball partially disappears before bouncing again to the left
+- As explained at NOTES FOR DEVELOPERS NUMBER 1, When the ball collapses with the wall in the very same moment it is moving to the left, ball partially disappears before bouncing again to the left
 
 - When ball is behind marker, it hides behind the rect we created to do the counter.
 
-- Sometimes when I move the bar, the ball´s speed changes, should not do
+- Sometimes when I move the bar, the ball´s speed slows down, should not do
+
+- Sometimes at the start of the game, the ball starts moving too fast
