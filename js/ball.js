@@ -257,7 +257,10 @@ export class Ball{
             As explained above on the goal logic, each time we have a goal,
             this loopInterval will be cleared.
             Otherwise ball goes each time faster.
-            Cleaning this interval we ensure everything is like at the beginning
+            Cleaning this interval we ensure everything is like at the beginning.
+
+            As the main setInterval on scripts.js, number value set to 15 (see reason 
+            on comments for that interval)
             
         */
         loopInterval=setInterval(()=>{
@@ -265,7 +268,7 @@ export class Ball{
 
             this.update();
             this.draw();
-        },0);
+        },15);
     }
 
    

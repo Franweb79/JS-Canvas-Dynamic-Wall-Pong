@@ -30,20 +30,24 @@ let myBall=new Ball(initialPositionForBallX,initialPositionForBallY,0,0,'black',
     with setInterval, I can do that bar and ball don´t delete if mouse event is not
     fired, that means for example if mouse is not used inside the canvas
 
-    timer is set to 0 so things are drawn "instantly"
+    The number value will be set to 15 to avoid strange ball speed behavior when we move the bar.
+    If we set too low value (for example, 4 that i think is the mimun allowed by HTML5)
+    can lead to that
+
 */
 
 setInterval(()=>{
 
     
     myBar.draw();
+    
     myBall.draw();
     myCounter.drawCounter();
     
 
 
 
-},0);
+},15);
 
 /*
     we draw again bar and ball when mouse move event,
@@ -80,15 +84,11 @@ myCanvas.addEventListener("mousemove",(event)=>{
             myBall.y=initialPositionForBallY;
 
 
-            myBall.draw();
 
-        }else
-        {
-            /* CHECK README NOTE FOR DEVELOPERS NUMBER 10*/
-            myBall.update();
-            myBall.draw();
+            console.log ("glue");
+
         }
-  
+        myBall.draw();
 });
 
 /**
